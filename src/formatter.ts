@@ -3,7 +3,7 @@ import Line from './Line';
 
 // Tab size of 4 spaces
 const TAB_SIZE = 4;
-const TAB = ' '.repeat(TAB_SIZE);
+const TAB = '\t';
 
 export default function formatter(document: TextDocument): TextEdit[] {
     /**

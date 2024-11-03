@@ -6,19 +6,20 @@ import { MipsySemanticTokensProvider, tokensLegend } from "./semanticTokens";
 import * as commands from './commands';
 import formatter from './formatter';
 
-vscode.languages.registerHoverProvider("mips", new MipsyHoverProvider());
+var languageID = "MIPS";
+vscode.languages.registerHoverProvider(languageID, new MipsyHoverProvider());
 vscode.languages.registerCompletionItemProvider(
-    "mips",
+    languageID,
     new MipsyCompletionItemProvider(),
     ...MipsyCompletionItemProvider.triggerCharacters
 );
-vscode.languages.registerDefinitionProvider("mips", new MipsyDefinitionProvider());
-vscode.languages.registerReferenceProvider("mips", new MipsyReferenceProvider());
-vscode.languages.registerDocumentSemanticTokensProvider("mips", new MipsySemanticTokensProvider(), tokensLegend);
+vscode.languages.registerDefinitionProvider(languageID, new MipsyDefinitionProvider());
+vscode.languages.registerReferenceProvider(languageID, new MipsyReferenceProvider());
+vscode.languages.registerDocumentSemanticTokensProvider(languageID, new MipsySemanticTokensProvider(), tokensLegend);
 
 export function activate(context: vscode.ExtensionContext) {
     commands.registerCommands(context);
-    vscode.languages.registerDocumentFormattingEditProvider('mips', {
+    vscode.languages.registerDocumentFormattingEditProvider(languageID, {
         provideDocumentFormattingEdits: formatter
     });
 }

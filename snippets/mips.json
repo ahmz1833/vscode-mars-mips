@@ -64,5 +64,26 @@
 		"body": "move\t\t\\$a0, ${1:\\$t0}\t\t\t# \\$a0 = $1 close $1\nli\t\t\t\\$v0, 16\t\t\t\t# syscall close file\nsyscall\t\t\t\t\t\t\t# execute",
 		"description": "close file",
 		"scope": "mips"
+	},
+	"macro": {
+		"prefix": "macro",
+		"body": ".macro ${1:NAME} \\$${2:params}\n${3:body}\n.end_macro\n",
+		"description": "create macro",
+		"scope": "source.mips"
+	},
+	"def function": {
+		"prefix": [
+			"def",
+			"fun"
+		],
+		"body": "# FUN ${1:foo}\n# ARGS:\n# \\$a0: ${2:arg1}\n# \\$a1: ${3:arg2}\n# \\$a2: ${4:arg3}\n# RETURN \\$v0: ${5:0}\n$1:\n${6:\taddi\t\t\\$sp, \\$sp, -20\t\t\t# \\$sp -= 20\n\tsw\t\t\t\\$s0, 16(\\$sp)\n\tsw\t\t\t\\$s1, 12(\\$sp)\n\tsw\t\t\t\\$s2, 8(\\$sp)\n\tsw\t\t\t\\$s3, 4(\\$sp)\n\tsw\t\t\t\\$ra, 0(\\$sp)\n\n\t$0\n\n\tlw\t\t\t\\$s0, 16(\\$sp)\n\tlw\t\t\t\\$s1, 12(\\$sp)\n\tlw\t\t\t\\$s2, 8(\\$sp)\n\tlw\t\t\t\\$s3, 4(\\$sp)\n\tlw\t\t\t\\$ra, 0(\\$sp)\n\taddi\t\t\\$sp, \\$sp, 20\t\t\t# \\$sp += 20\n\n\tmove \t\t\\$v0, ${7:\\$zero}\t\t\t# \\$v0 = ${7}\n\tjr\t\t\t\\$ra\t\t\t\t\t# jump to \\$ra\n}\n# END FUN $1",
+		"description": "def function",
+		"scope": "mips"
+	},
+	"var": {
+		"prefix": "var",
+		"body": "${1:var}: .${2|word,ascii,asciiz,byte,double,float,half,space|} $3",
+		"description": "variable",
+		"scope": "mips"
 	}
 }
