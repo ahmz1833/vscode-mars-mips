@@ -47,7 +47,7 @@ class MipsyCompletionItemProvider implements vscode.CompletionItemProvider {
 
     private getInstructionCompletionItems(document: vscode.TextDocument): vscode.CompletionItem[] {
         const autoIndent = vscode.workspace.getConfiguration(
-            "mipsy-support",
+            "mars-mips",
             document
         ).autoIndentAfterInstructionCompletion;
 
@@ -130,7 +130,7 @@ class MipsyCompletionItemProvider implements vscode.CompletionItemProvider {
         }
 
         let tabSize = vscode.workspace.getConfiguration("editor", document).tabSize;
-        let commentColumn = vscode.workspace.getConfiguration("mipsy-support", document).snippetCommentColumn ?? 32;
+        let commentColumn = vscode.workspace.getConfiguration("mars-mips", document).snippetCommentColumn ?? 32;
 
         // Ideally I would like to abstract this to something similar to objects in constants.ts, but things get
         // complicated with with that need to be evaluated at runtime.

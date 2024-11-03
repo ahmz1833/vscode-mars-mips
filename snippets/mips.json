@@ -1,0 +1,68 @@
+{
+	"print integer": {
+		"prefix": "printInt",
+		"body": "move\t\t\\$a0, ${1:\\$t0}\t\t\t# \\$a0 = $1\nli\t\t\t\\$v0, 1\t\t\t\t# syscall print int\nsyscall\t\t\t\t\t\t\t# execute",
+		"description": "print integer",
+		"scope": "mips"
+	},
+	"print string 1": {
+		"prefix": "printStr1",
+		"body": "move\t\t\\$a0, ${1:\\$t0}\t\t\t# \\$a0 = $1\nli\t\t\t\\$v0, 4\t\t\t\t# syscall print str\nsyscall\t\t\t\t\t\t\t# execute",
+		"description": "print string move",
+		"scope": "mips"
+	},
+	"print string 2": {
+		"prefix": "printStr2",
+		"body": "la\t\t\t\\$a0, ${1:str}\t\t\t# \\$a0 = $1\nli\t\t\t\\$v0, 4\t\t\t\t# syscall print str\nsyscall\t\t\t\t\t\t\t# execute",
+		"description": "print string la",
+		"scope": "mips"
+	},
+	"read integer": {
+		"prefix": "readInt",
+		"body": "li\t\t\t\\$v0, 5\t\t\t\t# syscall read int\nsyscall\t\t\t\t\t\t\t# execute\nmove\t\t${1:\\$t0}, \\$v0\t\t\t# $1 = \\$v0",
+		"description": "print integer",
+		"scope": "mips"
+	},
+	"allocate memory": {
+		"prefix": "allocMem",
+		"body": "li\t\t\t\\$a0, ${1:4}\t\t\t\t# allocate $1 bytes\nli\t\t\t\\$v0, 9\t\t\t\t# syscall allocate memory\nsyscall\t\t\t\t\t\t\t# execute",
+		"description": "allocate memories",
+		"scope": "mips"
+	},
+	"open file": {
+		"prefix": "openFile",
+		"body": "la\t\t\t\\$a0, ${1:str}\t\t\t# \\$a0 = $1\nli\t\t\t\\$a1, ${2|0,1|}\t\t\t\t# flag $2\nli\t\t\t\\$a2, ${3:0}\t\t\t\t# mode $3\nli\t\t\t\\$v0, 13\t\t\t\t# syscall open file\nsyscall\t\t\t\t\t\t\t# execute\nmove\t\t${4:\\$t0}, \\$v0\t\t\t# copy file descriptor",
+		"description": "open file",
+		"scope": "mips"
+	},
+	"open file to read": {
+		"prefix": "openFileRead",
+		"body": "la\t\t\t\\$a0, ${1:str}\t\t\t# \\$a0 = $1\nli\t\t\t\\$a1, ${2:0}\t\t\t\t# flag $2\nli\t\t\t\\$a2, ${3:0}\t\t\t\t# mode $3\nli\t\t\t\\$v0, 13\t\t\t\t# syscall open file\nsyscall\t\t\t\t\t\t\t# execute\nmove\t\t${4:\\$t0}, \\$v0\t\t\t# copy file descriptor",
+		"description": "open file to read",
+		"scope": "mips"
+	},
+	"open file to write": {
+		"prefix": "openFileWrite",
+		"body": "la\t\t\t\\$a0, ${1:str}\t\t\t# \\$a0 = $1\nli\t\t\t\\$a1, ${2:1}\t\t\t\t# flag $2\nli\t\t\t\\$a2, ${3:0}\t\t\t\t# mode $3\nli\t\t\t\\$v0, 13\t\t\t\t# syscall open file\nsyscall\t\t\t\t\t\t\t# execute\nmove\t\t${4:\\$t0}, \\$v0\t\t\t# copy file descriptor",
+		"description": "open file to write",
+		"scope": "mips"
+	},
+	"read file": {
+		"prefix": "readFile",
+		"body": "move\t\t\\$a0, ${1:\\$t0}\t\t\t# \\$a0 = $1 read $1\nla\t\t\t\\$a1, ${2:buffer}\t\t\t# \\$a1 = $2\nli\t\t\t\\$a2, ${3:4}\t\t\t\t# $3 bytes to read\nli\t\t\t\\$v0, 14\t\t\t\t# syscall read file\nsyscall\t\t\t\t\t\t\t# execute\nmove\t\t${4:\\$t0}, \\$v0\t\t\t# copy number of bytes read",
+		"description": "read file",
+		"scope": "mips"
+	},
+	"write file": {
+		"prefix": "writeFile",
+		"body": "move\t\t\\$a0, ${1:\\$t0}\t\t\t# \\$a0 = $1 write $1\nla\t\t\t\\$a1, ${2:buffer}\t\t\t# \\$a1 = $2\nli\t\t\t\\$a2, ${3:4}\t\t\t\t# $3 bytes to write\nli\t\t\t\\$v0, 15\t\t\t\t# syscall write file\nsyscall\t\t\t\t\t\t\t# execute\nmove\t\t${4:\\$t0}, \\$v0\t\t\t# copy number of bytes write",
+		"description": "write file",
+		"scope": "mips"
+	},
+	"close file": {
+		"prefix": "closeFile",
+		"body": "move\t\t\\$a0, ${1:\\$t0}\t\t\t# \\$a0 = $1 close $1\nli\t\t\t\\$v0, 16\t\t\t\t# syscall close file\nsyscall\t\t\t\t\t\t\t# execute",
+		"description": "close file",
+		"scope": "mips"
+	}
+}

@@ -44,7 +44,7 @@
         },
         "directives": {
             "name": "keyword.control.directive.mips",
-            "match": "\\.(ascii[z]?|byte|half|word|float|double|align|space|globl|[k]?text|[k]?data)\\b"
+            "match": "\\.(ascii[z]?|byte|half|word|float|double|align|space|globl|macro|end_macro|[k]?text|[k]?data)\\b"
         },
         "labels": {
             "match": "([a-zA-Z_][a-zA-Z0-9_]*)\\s*(:)",

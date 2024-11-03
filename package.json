@@ -1,28 +1,29 @@
 {
-    "name": "mipsy",
-    "displayName": "MIPSY Support",
-    "description": "Provides syntax highlighting, semantic highlighting, snippets, and more for MIPSY (https://github.com/insou22/mipsy).",
-    "version": "0.2.1",
-    "publisher": "Bahnschrift",
-    "homepage": "https://github.com/Bahnschrift/vscode-mipsy-support",
+    "name": "mars-mips",
+    "displayName": "MARS MIPS Support for VSCode",
+    "description": "Provides syntax highlighting, semantic highlighting, snippets, and running with MARS MIPS Simulator.",
+    "version": "1.0.0",
+    "publisher": "ahmz1833",
+    "homepage": "",
     "icon": "images/icon.png",
     "repository": {
         "type": "git",
-        "url": "https://github.com/Bahnschrift/vscode-mipsy-support"
-    },
-    "bugs": {
-        "url": "https://github.com/Bahnschrift/vscode-mipsy-support",
-        "email": "kbeckett@outlook.com.au"
+        "url": ""
     },
     "engines": {
-        "vscode": "^1.73.0"
+        "vscode": "^1.83.0"
     },
     "categories": [
         "Programming Languages",
-        "Snippets"
+        "Snippets",
+        "Formatters"
     ],
-    "activationEvents": [
-        "onLanguage:mips"
+    "keywords": [
+        "vscode",
+        "formatter",
+        "mips",
+        "assembly",
+        "asm"
     ],
     "main": "./out/mips",
     "contributes": {
@@ -30,10 +31,12 @@
             {
                 "id": "mips",
                 "aliases": [
+                    "MIPS Assembly",
                     "Mips",
                     "mips"
                 ],
                 "extensions": [
+                    ".asm",
                     ".s",
                     ".mips",
                     ".spim"
@@ -46,6 +49,12 @@
                 "language": "mips",
                 "scopeName": "source.mips",
                 "path": "./syntaxes/mips.tmLanguage.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "mips",
+                "path": "./snippets/mips.json"
             }
         ],
         "semanticTokenScopes": [
@@ -61,20 +70,90 @@
             }
         ],
         "configuration": {
-            "title": "Mipsy Support",
+            "title": "MARS MIPS Support for VSCode",
             "properties": {
-                "mipsy-support.autoIndentAfterInstructionCompletion": {
+                "mars-mips.autoIndentAfterInstructionCompletion": {
                     "type": "boolean",
                     "default": true,
                     "description": "Automatically indent after completing an instruction."
                 },
-                "mipsy-support.snippetCommentColumn": {
+                "mars-mips.snippetCommentColumn": {
                     "type": "integer",
                     "default": 32,
                     "minimum": 0,
                     "description": "Column at which to align comments in snippets. The column is calculated as an offset from the starting column of the snippet.\nShould be a multiple of the tab size, which for mips should be 8."
                 }
             }
+        },
+        "commands": [
+            {
+                "command": "mars-mips.assembleExec",
+                "title": "Assemble and run",
+                "icon": "$(run)"
+            },
+            {
+                "command": "mars-mips.assembleMips",
+                "title": "Assemble",
+                "icon": "$(test-view-icon)"
+            },
+            {
+                "command": "mars-mips.debugMips",
+                "title": "Debug (Run with extra info)",
+                "icon": "$(debug-alt)"
+            },
+            {
+                "command": "mars-mips.openMars",
+                "title": "Open Mars",
+                "icon": "$(project)"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "mars-mips.assembleExec",
+                "key": "F5",
+                "when": "resourceLangId == MIPS"
+            },
+            {
+                "command": "mars-mips.assembleMips",
+                "key": "F4",
+                "when": "resourceLangId == mips"
+            },
+            {
+                "command": "mars-mips.debugMips",
+                "key": "F6",
+                "when": "resourceLangId == mips"
+            },
+            {
+                "command": "mars-mips.openMars",
+                "key": "F7",
+                "when": "resourceLangId == mips"
+            }
+        ],
+        "menus": {
+            "editor/title": [
+                {
+                    "command": "mars-mips.assembleMips",
+                    "group": "navigation",
+                    "when": "resourceLangId == mips"
+                },
+                {
+                    "command": "mars-mips.openMars",
+                    "group": "navigation",
+                    "when": "resourceLangId == mips"
+                }
+            ],
+            "editor/title/run": [
+                {
+                    "command": "mars-mips.assembleExec",
+                    "group": "1_run",
+                    "when": "resourceLangId == mips"
+                },
+                {
+                    "command": "mars-mips.debugMips",
+                    "group": "1_run",
+                    "when": "resourceLangId == mips"
+                }
+            ]
         }
     },
     "capabilities": {
@@ -96,10 +175,15 @@
         "lint": "eslint src --ext ts"
     },
     "devDependencies": {
-        "@types/node": "^18.0.0",
-        "@types/vscode": "^1.68.0",
-        "@typescript-eslint/eslint-plugin": "^5.28.0",
-        "@typescript-eslint/parser": "^5.28.0",
-        "typescript": "^4.7.4"
+        "@angablue/eslint-config": "^1.4.5",
+        "@types/node": "^22.1.0",
+        "@types/mocha": "^10.0.2",
+        "@types/vscode": "^1.92.0",
+        "@typescript-eslint/eslint-plugin": "^6.7.5",
+        "@typescript-eslint/parser": "^6.7.5",
+        "@vscode/test-electron": "^2.3.4",
+        "typescript": "^5.5.4",
+        "eslint": "^9.0.0",
+        "prettier": "^3.3.3"
     }
 }
