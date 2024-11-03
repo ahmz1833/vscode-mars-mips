@@ -2,7 +2,7 @@
     "name": "mars-mips",
     "displayName": "MARS MIPS Support for VSCode",
     "description": "Provides syntax highlighting, semantic highlighting, snippets, and running with MARS MIPS Simulator.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "publisher": "ahmz1833",
     "homepage": "https://github.com/ahmz1833/vscode-mars-mips",
     "icon": "images/icon.png",
@@ -29,11 +29,12 @@
     "contributes": {
         "languages": [
             {
-                "id": "mips",
+                "id": "MIPS",
                 "aliases": [
                     "MIPS Assembly",
                     "Mips",
-                    "mips"
+                    "mips",
+                    "MIPS"
                 ],
                 "extensions": [
                     ".asm",
@@ -46,14 +47,14 @@
         ],
         "grammars": [
             {
-                "language": "mips",
+                "language": "MIPS",
                 "scopeName": "source.mips",
                 "path": "./syntaxes/mips.tmLanguage.json"
             }
         ],
         "snippets": [
             {
-                "language": "mips",
+                "language": "MIPS",
                 "path": "./snippets/mips.json"
             }
         ],
@@ -116,17 +117,17 @@
             {
                 "command": "mars-mips.assembleMips",
                 "key": "F4",
-                "when": "resourceLangId == mips"
+                "when": "resourceLangId == MIPS"
             },
             {
                 "command": "mars-mips.debugMips",
                 "key": "F6",
-                "when": "resourceLangId == mips"
+                "when": "resourceLangId == MIPS"
             },
             {
                 "command": "mars-mips.openMars",
                 "key": "F7",
-                "when": "resourceLangId == mips"
+                "when": "resourceLangId == MIPS"
             }
         ],
         "menus": {
@@ -134,24 +135,24 @@
                 {
                     "command": "mars-mips.assembleMips",
                     "group": "navigation",
-                    "when": "resourceLangId == mips"
+                    "when": "resourceLangId == MIPS"
                 },
                 {
                     "command": "mars-mips.openMars",
                     "group": "navigation",
-                    "when": "resourceLangId == mips"
+                    "when": "resourceLangId == MIPS"
                 }
             ],
             "editor/title/run": [
                 {
                     "command": "mars-mips.assembleExec",
                     "group": "1_run",
-                    "when": "resourceLangId == mips"
+                    "when": "resourceLangId == MIPS"
                 },
                 {
                     "command": "mars-mips.debugMips",
                     "group": "1_run",
-                    "when": "resourceLangId == mips"
+                    "when": "resourceLangId == MIPS"
                 }
             ]
         }
