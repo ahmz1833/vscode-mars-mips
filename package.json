@@ -2,7 +2,7 @@
     "name": "mars-mips",
     "displayName": "MARS MIPS Support for VSCode",
     "description": "Provides syntax highlighting, semantic highlighting, snippets, and running with MARS MIPS Simulator.",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "publisher": "ahmz1833",
     "homepage": "https://github.com/ahmz1833/vscode-mars-mips",
     "icon": "images/icon.png",
@@ -175,12 +175,12 @@
         "lint": "eslint src --ext ts"
     },
     "devDependencies": {
-        "@types/node": "^22.1.0",
         "@types/mocha": "^10.0.2",
+        "@types/node": "^22.1.0",
         "@types/vscode": "^1.83.0",
         "@vscode/test-electron": "^2.3.4",
-        "typescript": "^5.5.4",
         "eslint": "^9.0.0",
-        "prettier": "^3.3.3"
+        "prettier": "^3.3.3",
+        "typescript": "^5.5.4"
     }
 }
