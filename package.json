@@ -4,11 +4,11 @@
     "description": "Provides syntax highlighting, semantic highlighting, snippets, and running with MARS MIPS Simulator.",
     "version": "1.0.0",
     "publisher": "ahmz1833",
-    "homepage": "",
+    "homepage": "https://github.com/ahmz1833/vscode-mars-mips",
     "icon": "images/icon.png",
     "repository": {
         "type": "git",
-        "url": ""
+        "url": "https://github.com/ahmz1833/vscode-mars-mips.git"
     },
     "engines": {
         "vscode": "^1.83.0"
@@ -175,12 +175,9 @@
         "lint": "eslint src --ext ts"
     },
     "devDependencies": {
-        "@angablue/eslint-config": "^1.4.5",
         "@types/node": "^22.1.0",
         "@types/mocha": "^10.0.2",
-        "@types/vscode": "^1.92.0",
-        "@typescript-eslint/eslint-plugin": "^6.7.5",
-        "@typescript-eslint/parser": "^6.7.5",
+        "@types/vscode": "^1.83.0",
         "@vscode/test-electron": "^2.3.4",
         "typescript": "^5.5.4",
         "eslint": "^9.0.0",
